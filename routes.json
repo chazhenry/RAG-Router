@@ -1,0 +1,166 @@
+[
+    {
+        "route": "support_ticket",
+        "match_type": "keyword",
+        "keywords": [
+            "snow",
+            "servicenow",
+            "service now",
+            "salesforce",
+            "support ticket",
+            "create ticket",
+            "log this"
+        ],
+        "description": "Generates a support ticket in a specific system like ServiceNow or Salesforce.",
+        "examples": [
+            "Create a ServiceNow ticket.",
+            "I need to open a SNOW ticket.",
+            "Log this in Service Now.",
+            "Make a new case in Salesforce."
+        ]
+    },
+    {
+        "route": "vector_search",
+        "match_type": "semantic",
+        "description": "The primary route for all informational queries. This is the default for any question structured as 'what is', 'who is', 'what are', 'explain', or 'tell me about'. Use this for 'how-to' questions, requests for instructions, guides, and documentation.",
+        "examples": [
+            "what is a critical system error?",
+            "tell me about error code 503",
+            "explain what a kernel panic is",
+            "what is a sedan?",
+            "who is the CEO?",
+            "what are the store hours?",
+            "tell me about the warranty policy",
+            "how to add a new user?",
+            "how do I reset my password?",
+            "What are the steps to troubleshoot a network issue?",
+            "How do I configure the VPN settings?"
+        ]
+    },
+    {
+        "route": "parts_search",
+        "match_type": "semantic",
+        "description": "use when the user is looking for specific parts, components, or products. This is for queries that ask for a part number, product name, or specific item.",
+        "examples": [
+            "How many users are on the platform?",
+            "What is the total sales revenue for last quarter?"
+        ]
+    },
+    {
+        "route": "sql_search",
+        "match_type": "semantic",
+        "description": "Queries a SQL database for structured data.",
+        "examples": [
+            "How many users are on the platform?",
+            "What is the total sales revenue for last quarter?"
+        ]
+    },
+    {
+        "route": "web_search",
+        "match_type": "semantic",
+        "description": "Conducts a general web search. Use for current events, general knowledge, or to get the latest external information and broader public context on a technical issue. A good secondary choice after vector_search.",
+        "examples": [
+            "What is a 'kernel panic'?",
+            "Find articles comparing different types of computer memory.",
+            "Search for common causes of network latency.",
+            "What are the differences between SQL and NoSQL databases?",
+            "Who won the baseball game last night?",
+            "What is the current weather forecast?",
+            "Search the internet for reviews of the 2025 Corvette."
+        ]
+    },
+    {
+        "route": "email_send",
+        "match_type": "semantic",
+        "description": "Use this when the query explicitly asks to send or compose an email.",
+        "examples": [
+            "Send an email to my sales representative.",
+            "Email this information to me.",
+            "Send me an email to bob@gmail.com."
+        ]
+    },
+    {
+        "route": "sms_send",
+        "match_type": "semantic",
+        "description": "Use this when the query explicitly asks to send and SMS text message.",
+        "examples": [
+            "Send an SMS to 919-555-1212",
+            "Text this information to my phone.",
+            "Shoot me a text with this answer.",
+            "Send me a text message."
+        ]
+    },
+    {
+        "route": "greeting",
+        "match_type": "semantic",
+        "description": "Responds to simple hellos, goodbyes, and other social niceties.",
+        "examples": [
+            "Hello",
+            "Hi, how are you?",
+            "Good morning",
+            "Goodbye"
+        ]
+    },
+    {
+        "route": "clarification",
+        "match_type": "semantic",
+        "description": "Handles meta-questions about the conversation itself. Use when the user asks for clarification on the previous response, asks to elaborate, or uses vague phrases that reference the ongoing dialogue.",
+        "examples": [
+            "what do you mean by that?",
+            "Can you explain that further?",
+            "Tell me more about that.",
+            "What does that imply?",
+            "Could you elaborate?",
+            "Go on.",
+            "And then what?",
+            "Why is that the case?",
+            "What are you referring to?",
+            "Can you say that again in Spanish?",
+            "Summarize that last answer for me.",
+            "Put that into a list.",
+            "Show me that as a table."
+        ]
+    },
+    {
+        "route": "reset_context",
+        "match_type": "semantic",
+        "description": "Resets the conversation. Use when the user wants to start over, change topics completely, or explicitly asks to clear the context of the current dialogue.",
+        "examples": [
+            "Let's start over.",
+            "Clear context.",
+            "Forget everything we just talked about.",
+            "Let's try something else.",
+            "Reset."
+        ]
+    },
+    {
+        "route": "help",
+        "match_type": "semantic",
+        "description": "Provides help and information about the AI's capabilities and available tools. Triggered when the user asks what the system can do or requests assistance.",
+        "examples": [
+            "help",
+            "What can you do?",
+            "List all available tools.",
+            "How does this work?",
+            "What are my options?"
+        ]
+    },
+    {
+        "route": "feedback",
+        "match_type": "semantic",
+        "description": "Captures explicit user feedback, both positive and negative, about the quality of the previous response or the system's performance. This is for direct praise or correction, not for when the user is confused or asking for clarification.",
+        "examples": [
+            "No, that's incorrect.",
+            "That's not what I asked for.",
+            "You are wrong.",
+            "That answer wasn't helpful.",
+            "you suck",
+            "That was the right answer, thank you.",
+            "Perfect, that's exactly what I needed.",
+            "Great job.",
+            "This was very helpful.",
+            "I have a suggestion for improvement.",
+            "This process is too slow."
+        ]
+    }
+]
