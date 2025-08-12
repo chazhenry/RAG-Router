@@ -15,9 +15,12 @@ class RAGRouter:
     semantic search for all other routes.
     """
     def __init__(self, 
-                 model_name: str = "all-MiniLM-L6-v2",
-                 max_routes: int = 3,
-                 collection_name: str = "route_collection_v3"):
+                #model_name: str = "all-MiniLM-L6-v2", #  fast and lightweight (~80MB)
+                #model_name: str = "BAAI/bge-large-en-v1.5",  # ~1.3gb accurate but slower
+                model_name: str = "all-mpnet-base-v2", # better answers but larger (~420MB)
+                #model_name: str = "text-embedding-3-large", # paid API
+                max_routes: int = 3,
+                collection_name: str = "route_classifier_v1"):
         
         self.max_routes = max_routes
         self.collection_name = collection_name
@@ -47,7 +50,7 @@ class RAGRouter:
 
     def _initialize_default_routes(self):
         """Initialize the collection with default routes."""
-        print(f"{Fore.CYAN}✅ Adding default routes from routes.json...{Style.RESET_ALL}", end=' ')
+        print(f"{Fore.GREEN}✅ Adding default routes from routes.json...{Style.RESET_ALL}", end=' ')
         
         # Load routes from external JSON file
         routes_file = "routes.json"
@@ -65,7 +68,7 @@ class RAGRouter:
         for route_config in default_routes:
             self.add_route(route_config)
         
-        print(f"{Fore.GREEN}✅ Finished adding {len(default_routes)} default routes.{Style.RESET_ALL}\n")
+        print(f"{Fore.GREEN}✅ Added {len(default_routes)} routes.{Style.RESET_ALL}\n")
 
     def add_route(self, route_config: Dict[str, Any]):
         """
@@ -155,6 +158,14 @@ def delete_folder_contents(folder_path: str):
         except Exception as e:
             print(f"{Fore.RED}❌ Error deleting directory {folder_path}: {e}{Style.RESET_ALL}")
 
+def print_header():
+    print(f'{Fore.GREEN}')
+    print(' _____ _____ _____     _____ _____ _____ _____ _____ _____ ')
+    print('| __  |  _  |   __|___| __  |     |  |  |_   _|   __| __  |')
+    print('|    -|     |  |  |___|    -|  |  |  |  | | | |   __|    -|')
+    print('|__|__|__|__|_____|   |__|__|_____|_____| |_| |_____|__|__|', 'v1.0.0')
+    print(f'{Style.RESET_ALL}')
+
 def main():
     """Test the RAG router with sample prompts."""
     delete_folder_contents("./chroma_db")  # Clean up old data
@@ -174,9 +185,5 @@ def main():
             print(f"{Fore.YELLOW}-----------------------------------------------------\n")
 
 if __name__ == "__main__":
-    print(f'{Fore.GREEN}')
-    print(' _____ _____ _____     _____ _____ _____ _____ _____ _____ ')
-    print('| __  |  _  |   __|___| __  |     |  |  |_   _|   __| __  |')
-    print('|    -|     |  |  |___|    -|  |  |  |  | | | |   __|    -|')
-    print('|__|__|__|__|_____|   |__|__|_____|_____| |_| |_____|__|__|', 'v1.0.0')
+    print_header()
     main()

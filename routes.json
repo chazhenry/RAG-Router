@@ -1,25 +1,5 @@
 [
     {
-        "route": "support_ticket",
-        "match_type": "keyword",
-        "keywords": [
-            "snow",
-            "servicenow",
-            "service now",
-            "salesforce",
-            "support ticket",
-            "create ticket",
-            "log this"
-        ],
-        "description": "Generates a support ticket in a specific system like ServiceNow or Salesforce.",
-        "examples": [
-            "Create a ServiceNow ticket.",
-            "I need to open a SNOW ticket.",
-            "Log this in Service Now.",
-            "Make a new case in Salesforce."
-        ]
-    },
-    {
         "route": "vector_search",
         "match_type": "semantic",
         "description": "The primary route for all informational queries. This is the default for any question structured as 'what is', 'who is', 'what are', 'explain', or 'tell me about'. Use this for 'how-to' questions, requests for instructions, guides, and documentation.",
@@ -27,24 +7,65 @@
             "what is a critical system error?",
             "tell me about error code 503",
             "explain what a kernel panic is",
-            "what is a sedan?",
+            "what is risc v architecture?",
             "who is the CEO?",
-            "what are the store hours?",
+            "how to reset a password",
+            "why should I use a VPN?",
+            "steps to troubleshoot a network issue",
+            "guide to setting up a new device",
+            "what are the benefits of using a password manager?",
             "tell me about the warranty policy",
             "how to add a new user?",
             "how do I reset my password?",
             "What are the steps to troubleshoot a network issue?",
-            "How do I configure the VPN settings?"
+            "How do I configure my network settings?",
+            "what is the status of my support case?",
+            "How can I find an old ticket?",
+            "explain the escalation process for tickets",
+            "what do I do with a closed case?"
         ]
     },
     {
-        "route": "parts_search",
-        "match_type": "semantic",
-        "description": "use when the user is looking for specific parts, components, or products. This is for queries that ask for a part number, product name, or specific item.",
+        "route": "support_ticket",
+        "match_type": "keyword",
+        "description": "User wants to create a new support ticket, case, or trouble ticket.",
         "examples": [
-            "How many users are on the platform?",
-            "What is the total sales revenue for last quarter?"
+            "Create a ServiceNow ticket",
+            "I need to open a case.",
+            "log this issue for me.",
+            "start a new trouble ticket",
+            "I need to report a bug in the system.",
+            "make a case",
+            "Make this a high-priority case.",
+            "Open a support request for me."
+        ],
+        "keywords": [
+            "snow",
+            "servicenow",
+            "service now",
+            "trouble ticket",
+            "salesforce",
+            "support ticket",
+            "create ticket",
         ]
+    },
+    {
+        "route": "xray",
+        "match_type": "keyword",
+        "keywords": [
+            "/xray",
+            "/x"
+        ],
+        "description": "shows the current state of internal variables for debugging purposes."
+    },
+    {
+        "route": "find",
+        "match_type": "keyword",
+        "keywords": [
+            "/find",
+            "/f"
+        ],
+        "description": "shows the current state of internal variables for debugging purposes."
     },
     {
         "route": "sql_search",
